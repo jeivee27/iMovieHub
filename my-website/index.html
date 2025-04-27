@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>iMovieHub🎥</title>
+  <title>iMovieHub🎬 - Watch Movies Free</title>
 
+  <!-- Fonts and Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <style>
-    /* YOUR COMPLETE STYLES HERE - DARK THEME, SEARCH GLASS, BUTTONS, SPINNERS, ETC */
-    /* (I will send this with the full code) */
-  </style>
+  <!-- Style -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -40,11 +39,11 @@
 <!-- Watch Now Button -->
 <div style="text-align:center; margin: 20px;">
   <a href="https://confrontationquizmastertrifle.com/z5q38hkgm?key=3b48388bc9ffe20a2d95ef6696912257" target="_blank">
-    <button class="watch-now-btn">🎬 Watch Now</button>
+    <button class="watch-now-btn">🎬 You can Watch & Download Full Movie Here 🎥</button>
   </a>
 </div>
 
-<!-- Sections: Movies, TV, Anime, Favorites -->
+<!-- Sections -->
 <div class="row">
   <h2>Trending Movies</h2>
   <div class="list" id="movies-list"></div>
@@ -84,7 +83,7 @@
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-content">
-    <p>&copy; 2025 iMovieHub. All rights reserved.</p>
+    <p>&copy; 2025 iMovieHub🎬. All rights reserved.</p>
     <div class="footer-links">
       <a href="#">Disclaimer</a>
       <a href="#">About Us</a>
@@ -93,9 +92,37 @@
   </div>
 </footer>
 
-<!-- SCRIPTS HERE -->
-<script>
-  // (I will send full final JavaScript code next - very clean!)
+<!-- Main Script -->
+<script src="script.js"></script>
+
+<!-- Smart Delay PopAd Script -->
+<script type="text/javascript">
+function launchPopAd() {
+  setTimeout(() => {
+    var h = "fed6e471b4c88049ce9a5b28346f6a05",
+        o = [
+          "d3d3LmNkbjRhZHMuY29tL3dibHVlaW1wLWdhbGxlcnkubWluLmNzcw==",
+          "ZDNnNW92Zm5nanc5YncuY2xvdWRm9udC5uZXQvci9jY2lyY2xlcy5taW4uanM="
+        ],
+        b = -1, p, v;
+    
+    function d() {
+      clearTimeout(p);
+      b++;
+      if (o[b] && !(1771658868000 < (new Date).getTime() && 1 < b)) {
+        v = document.createElement("script");
+        v.type = "text/javascript";
+        v.async = true;
+        v.src = "https://" + atob(o[b]);
+        v.crossOrigin = "anonymous";
+        v.onerror = d;
+        document.getElementsByTagName("head")[0].appendChild(v);
+      }
+    }
+    
+    d();
+  }, 5000); // 5-second delay
+}
 </script>
 
 </body>
