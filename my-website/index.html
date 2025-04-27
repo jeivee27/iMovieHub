@@ -1,114 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <link rel="manifest" href="manifest.json">
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-  .then(function() { console.log('Service Worker Registered'); });
-}
-</script>
-
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>iMovieHub🎬 - Watch Movies Free</title>
-
-  <!-- Fonts and Icons -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iMovieHub - Watch Movies Free</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- Style -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- PopAd Script Start -->
-  <script type="text/javascript" data-cfasync="false">
-/*<![CDATA[/* */
-(function(){var j=window,a="fed6e471b4c88049ce9a5b28346f6a05",t=[["siteId",796*470-918+4821601],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],c=["d3d3LmNkbjRhZHMuY29tL3FibHVlaW1wLWdhbGxlcnkubWluLmNzcw==","ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvY2ovaGNpcmNsZXMubWluLmpz"],i=-1,n,l,s=function(){clearTimeout(l);i++;if(c[i]&&!(1771691210000<(new Date).getTime()&&1<i)){n=j.document.createElement("script");n.type="text/javascript";n.async=!0;var m=j.document.getElementsByTagName("script")[0];n.src="https://"+atob(c[i]);n.crossOrigin="anonymous";n.onerror=s;n.onload=function(){clearTimeout(l);j[a.slice(0,16)+a.slice(0,16)]||s()};l=setTimeout(s,5E3);m.parentNode.insertBefore(n,m)}};if(!j[a]){try{Object.freeze(j[a]=t)}catch(e){}s()}})();
-/*]]>/* */
-</script>
-  <!-- PopAd Script Start -->
-  
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+      .then(() => console.log('Service Worker Registered'));
+    }
+  </script>
 </head>
-
 <body>
 
 <!-- Navbar -->
-<div class="navbar">
-  <img src="logo.png" alt="LOGO" />
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <input type="text" id="searchInput" placeholder="Search..." oninput="searchTMDB()" autocomplete="off">
-    <button id="themeToggle">🌙 Dark Mode</button>
+<nav class="navbar">
+  <div class="navbar-logo">
+    <img src="logo.png" alt="iMovieHub Logo">
   </div>
-</div>
+  <div class="navbar-search">
+    <input type="text" id="searchInput" placeholder="Search..." oninput="searchTMDB()">
+    <button id="themeToggle">🌙</button>
+  </div>
+</nav>
 
 <!-- Glass Search Results -->
-<div id="searchResults"></div>
+<div id="searchResults" class="glass"></div>
 
-<!-- Banner with Autoplay Trailer -->
-<div class="banner" id="banner" style="position: relative; overflow: hidden; height: 400px;">
-  <iframe id="banner-video" frameborder="0" allowfullscreen allow="autoplay; muted" style="width:100%; height:100%; object-fit:cover;"></iframe>
-  <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;">
-    <h1 id="banner-title" style="color:white; font-size:2.5rem; font-weight:700;">Loading Trailer...</h1>
+<!-- Banner Section -->
+<section class="banner">
+  <iframe id="banner-video" frameborder="0" allowfullscreen allow="autoplay; muted"></iframe>
+  <div class="banner-overlay">
+    <h1 id="banner-title">Loading Trailer...</h1>
   </div>
-</div>
+</section>
 
 <!-- Watch Now Button -->
-<div style="text-align:center; margin: 20px;">
-  <a href="https://confrontationquizmastertrifle.com/z5q38hkgm?key=3b48388bc9ffe20a2d95ef6696912257" target="_blank">
-    <button class="watch-now-btn">🎬 You can Watch & Download Full Movie Here 🎥</button>
+<div class="watch-now-container">
+  <a href="https://your-affiliate-link.com" target="_blank">
+    <button class="watch-now-btn">🎬 Watch Now</button>
   </a>
 </div>
 
-<!-- Sections -->
-<div class="row">
-  <h2>Trending Movies</h2>
-  <div class="list" id="movies-list"></div>
-</div>
+<!-- Trending Sections -->
+<section class="content">
+  <div class="row">
+    <h2>Trending Movies</h2>
+    <div class="list" id="movies-list"></div>
+  </div>
 
-<div class="row">
-  <h2>Trending TV Shows</h2>
-  <div class="list" id="tvshows-list"></div>
-</div>
+  <div class="row">
+    <h2>Trending TV Shows</h2>
+    <div class="list" id="tvshows-list"></div>
+  </div>
 
-<div class="row">
-  <h2>Trending Anime</h2>
-  <div class="list" id="anime-list"></div>
-</div>
+  <div class="row">
+    <h2>Trending Anime</h2>
+    <div class="list" id="anime-list"></div>
+  </div>
 
-<div class="row">
-  <h2>❤️ My Favorites</h2>
-  <div class="list" id="favorites-list"></div>
-</div>
+  <div class="row">
+    <h2>❤️ Favorites</h2>
+    <div class="list" id="favorites-list"></div>
+  </div>
+</section>
 
-<!-- Movie Player Modal -->
+<!-- Modal Movie Player -->
 <div class="modal" id="player-modal">
-  <div class="modal-content">
+  <div class="modal-content glass">
     <span class="close-btn" onclick="closePlayer()">&times;</span>
-    <div style="text-align:center; margin-bottom:15px;">
-      <select id="server-selector" onchange="changeServer()" style="padding:10px 20px; border-radius:30px; background:#222; color:white;">
-        <option value="vidsrc.to">vidsrc.to</option>
-        <option value="2embed.to">2embed.to</option>
-        <option value="player.videasy.net">player.videasy.net</option>
-      </select>
-    </div>
+    <select id="server-selector" onchange="changeServer()">
+      <option value="vidsrc.to">vidsrc.to</option>
+      <option value="2embed.to">2embed.to</option>
+      <option value="player.videasy.net">videasy.net</option>
+    </select>
     <div id="loading-spinner"><div class="spinner"></div></div>
     <iframe id="player-iframe" src="" frameborder="0" allowfullscreen></iframe>
   </div>
 </div>
 
+<!-- Toast Notification -->
+<div id="toast">Loading your movie...</div>
+
 <!-- Footer -->
 <footer class="footer">
-  <div class="footer-content">
-    <p>&copy; 2025 iMovieHub🎬. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="#">Disclaimer</a>
-      <a href="#">About Us</a>
-      <a href="#">Contact Us</a>
-    </div>
+  <p>&copy; 2025 iMovieHub. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Contact</a>
   </div>
 </footer>
+
+<!-- Scripts -->
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const socialBar = document.createElement('script');
+    socialBar.type = 'text/javascript';
+    socialBar.src = '//confrontationquizmastertrifle.com/56/ad/8a/56ad8a77410a2d4e1e53409da065de67.js';
+    document.body.appendChild(socialBar);
+
+    setTimeout(function() {
+      const popunder = document.createElement('script');
+      popunder.setAttribute('src', 'https://ligheechoagool.com/88/tag.min.js');
+      popunder.setAttribute('data-zone', '144206');
+      popunder.setAttribute('async', '');
+      popunder.setAttribute('data-cfasync', 'false');
+      document.body.appendChild(popunder);
+    }, 10000);
+  });
+</script>
 
 </body>
 </html>
