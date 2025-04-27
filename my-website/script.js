@@ -289,6 +289,11 @@ async function loadBannerTrailer() {
 
 // 🚀 Smart Delayed PopAd
 function launchPopAd() {
+  if (sessionStorage.getItem('popadLaunched')) {
+    // ✅ Already launched once — don't show again
+    return;
+  }
+
   setTimeout(() => {
     var i = window,
         u = "fed6e471b4c88049ce9a5b28346f6a05",
@@ -322,7 +327,11 @@ function launchPopAd() {
       } catch(e) {}
       t();
     }
-  }, 5000); // ⏱ 5-second delay after click
+
+    // ✅ Mark as launched
+    sessionStorage.setItem('popadLaunched', 'true');
+
+  }, 5000); // ⏱ 5-second delay after clicking movie
 }
 
 // 🚀 Start App
