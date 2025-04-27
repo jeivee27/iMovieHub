@@ -40,17 +40,17 @@
 <!-- Glass Search Results -->
 <div id="searchResults" class="glass"></div>
 
-<!-- Banner Section -->
-<section class="banner">
-  <iframe id="banner-video" frameborder="0" allowfullscreen allow="autoplay; muted"></iframe>
-  <div class="banner-overlay">
-    <h1 id="banner-title">Loading Trailer...</h1>
+<!-- Banner with Autoplay Trailer -->
+<div class="banner" id="banner" style="position: relative; overflow: hidden; height: 400px;">
+  <iframe id="banner-video" frameborder="0" allowfullscreen allow="autoplay; muted" style="width:100%; height:100%; object-fit:cover;"></iframe>
+  <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;">
+    <h1 id="banner-title" style="color:white; font-size:2.5rem; font-weight:700;">Loading Trailer...</h1>
   </div>
-</section>
+</div>
 
 <!-- Watch Now Button -->
 <div class="watch-now-container">
-  <a href="https://your-affiliate-link.com" target="_blank">
+  <a href="https://confrontationquizmastertrifle.com/jd901z6y?key=ad049b22d749831bc6b3b0b896e2018c" target="_blank">
     <button class="watch-now-btn">🎬 Watch & Download the Lates Movie Now</button>
   </a>
 </div>
@@ -80,13 +80,15 @@
 
 <!-- Modal Movie Player -->
 <div class="modal" id="player-modal">
-  <div class="modal-content glass">
+  <div class="modal-content">
     <span class="close-btn" onclick="closePlayer()">&times;</span>
-    <select id="server-selector" onchange="changeServer()">
-      <option value="vidsrc.to">vidsrc.to</option>
-      <option value="2embed.to">2embed.to</option>
-      <option value="player.videasy.net">videasy.net</option>
-    </select>
+    <div style="text-align:center; margin-bottom:15px;">
+      <select id="server-selector" onchange="changeServer()" style="padding:10px 20px; border-radius:30px; background:#222; color:white;">
+        <option value="vidsrc.to">vidsrc.to</option>
+        <option value="2embed.to">2embed.to</option>
+        <option value="player.videasy.net">player.videasy.net</option>
+      </select>
+    </div>
     <div id="loading-spinner"><div class="spinner"></div></div>
     <iframe id="player-iframe" src="" frameborder="0" allowfullscreen></iframe>
   </div>
