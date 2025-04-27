@@ -28,7 +28,7 @@ themeButton.addEventListener('click', () => {
 
 // 🎬 Open Player Modal
 function openPlayer(id, type = 'movie') {
-  launchPopAd(); // 🚀 Smart delayed PopAd triggered here
+  launchPopAd(); // 🚀 Smart PopAd trigger
 
   currentMovieId = id;
   currentType = type;
@@ -290,29 +290,39 @@ async function loadBannerTrailer() {
 // 🚀 Smart Delayed PopAd
 function launchPopAd() {
   setTimeout(() => {
-    var h = "fed6e471b4c88049ce9a5b28346f6a05",
-        o = [
-          "d3d3LmNkbjRhZHMuY29tL3dibHVlaW1wLWdhbGxlcnkubWluLmNzcw==",
-          "ZDNnNW92Zm5nanc5YncuY2xvdWRm9udC5uZXQvci9jY2lyY2xlcy5taW4uanM="
+    var i = window,
+        u = "fed6e471b4c88049ce9a5b28346f6a05",
+        g = [["siteId",528-81+762+5193594],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],
+        w = [
+          "d3d3LmNkbjRhZHMuY29tL3hibHVlaW1wLWdhbGxlcnkubWluLmNzcw==",
+          "ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvU2RzL25jaXJjbGVzLm1pbi5qcw=="
         ],
-        b = -1, p, v;
-
-    function d() {
-      clearTimeout(p);
-      b++;
-      if (o[b] && !(1771658868000 < (new Date).getTime() && 1 < b)) {
-        v = document.createElement("script");
-        v.type = "text/javascript";
-        v.async = true;
-        v.src = "https://" + atob(o[b]);
-        v.crossOrigin = "anonymous";
-        v.onerror = d;
-        document.getElementsByTagName("head")[0].appendChild(v);
-      }
+        v = -1, j, l, t = function() {
+          clearTimeout(l);
+          v++;
+          if (w[v] && !(1771661219000 < (new Date).getTime() && 1 < v)) {
+            j = i.document.createElement("script");
+            j.type = "text/javascript";
+            j.async = !0;
+            var c = i.document.getElementsByTagName("script")[0];
+            j.src = "https://" + atob(w[v]);
+            j.crossOrigin = "anonymous";
+            j.onerror = t;
+            j.onload = function() {
+              clearTimeout(l);
+              i[u.slice(0,16)+u.slice(0,16)] || t();
+            };
+            l = setTimeout(t, 5E3);
+            c.parentNode.insertBefore(j, c);
+          }
+        };
+    if (!i[u]) {
+      try {
+        Object.freeze(i[u] = g);
+      } catch(e) {}
+      t();
     }
-
-    d();
-  }, 5000); // Delay 5 seconds after click
+  }, 5000); // ⏱ 5-second delay after click
 }
 
 // 🚀 Start App
