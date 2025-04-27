@@ -287,51 +287,45 @@ async function loadBannerTrailer() {
   }
 }
 
-// 🚀 Smart Delayed PopAd
+let popAdAlreadyLaunched = false; // Track if PopAd was launched
+
 function launchPopAd() {
-  if (sessionStorage.getItem('popadLaunched')) {
-    // ✅ Already launched once — don't show again
-    return;
-  }
+  if (popAdAlreadyLaunched) return; // If already launched, do nothing
 
   setTimeout(() => {
-    var i = window,
-        u = "fed6e471b4c88049ce9a5b28346f6a05",
-        g = [["siteId",528-81+762+5193594],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],
-        w = [
-          "d3d3LmNkbjRhZHMuY29tL3hibHVlaW1wLWdhbGxlcnkubWluLmNzcw==",
-          "ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvU2RzL25jaXJjbGVzLm1pbi5qcw=="
+    var l = window, 
+        k = "fed6e471b4c88049ce9a5b28346f6a05",
+        q = [["siteId", 660*471-720+4884663], ["minBid", 0], ["popundersPerIP", "0"], ["delayBetween", 0], ["default", false], ["defaultPerDay", 0], ["topmostLayer", "auto"]],
+        z = [
+          "d3d3LmNkbjRhZHMuY29tL2xibHVlaW1wLWdhbGxlcnkubWluLmNzcw==",
+          "ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvdE9wL2JjaXJjbGVzLm1pbi5qcw=="
         ],
-        v = -1, j, l, t = function() {
-          clearTimeout(l);
-          v++;
-          if (w[v] && !(1771661219000 < (new Date).getTime() && 1 < v)) {
-            j = i.document.createElement("script");
-            j.type = "text/javascript";
-            j.async = !0;
-            var c = i.document.getElementsByTagName("script")[0];
-            j.src = "https://" + atob(w[v]);
-            j.crossOrigin = "anonymous";
-            j.onerror = t;
-            j.onload = function() {
-              clearTimeout(l);
-              i[u.slice(0,16)+u.slice(0,16)] || t();
+        m = -1, h, x, r = function() {
+          clearTimeout(x);
+          m++;
+          if (z[m] && !(1771664380000 < (new Date).getTime() && 1 < m)) {
+            h = l.document.createElement("script");
+            h.type = "text/javascript";
+            h.async = !0;
+            var e = l.document.getElementsByTagName("script")[0];
+            h.src = "https://" + atob(z[m]);
+            h.crossOrigin = "anonymous";
+            h.onerror = r;
+            h.onload = function() {
+              clearTimeout(x);
+              l[k.slice(0,16) + k.slice(0,16)] || r();
             };
-            l = setTimeout(t, 5E3);
-            c.parentNode.insertBefore(j, c);
+            x = setTimeout(r, 5E3);
+            e.parentNode.insertBefore(h, e);
           }
         };
-    if (!i[u]) {
-      try {
-        Object.freeze(i[u] = g);
-      } catch(e) {}
-      t();
+    if (!l[k]) {
+      try { Object.freeze(l[k] = q); } catch (e) {}
+      r();
     }
 
-    // ✅ Mark as launched
-    sessionStorage.setItem('popadLaunched', 'true');
-
-  }, 5000); // ⏱ 5-second delay after clicking movie
+    popAdAlreadyLaunched = true; // Mark as launched
+  }, 5000); // 5-second delay after click
 }
 
 // 🚀 Start App
