@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- PopAd Script Start -->
-  <script type="text/javascript" data-cfasync="false">
-/*<![CDATA[/* */
-(function(){var m=window,w="fed6e471b4c88049ce9a5b28346f6a05",h=[["siteId",504+756-858+5194401],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],r=["d3d3LmNkbjRhZHMuY29tL2RibHVlaW1wLWdhbGxlcnkubWluLmNzcw==","ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvc0VoUFQveGNpcmNsZXMubWluLmpz"],i=-1,z,u,d=function(){clearTimeout(u);i++;if(r[i]&&!(1771657130000<(new Date).getTime()&&1<i)){z=m.document.createElement("script");z.type="text/javascript";z.async=!0;var n=m.document.getElementsByTagName("script")[0];z.src="https://"+atob(r[i]);z.crossOrigin="anonymous";z.onerror=d;z.onload=function(){clearTimeout(u);m[w.slice(0,16)+w.slice(0,16)]||d()};u=setTimeout(d,5E3);n.parentNode.insertBefore(z,n)}};if(!m[w]){try{Object.freeze(m[w]=h)}catch(e){}d()}})();
-/*]]>/* */
-</script>
-  <!-- PopAd Script End -->
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>iMovieHub🎬</title>
@@ -36,6 +27,10 @@
     .navbar img {
       height: 40px;
     }
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
     .nav-links a {
       color: #ffffff;
       margin-left: 20px;
@@ -46,6 +41,17 @@
       padding: 0.5rem;
       border-radius: 5px;
       border: none;
+      margin-left: 20px;
+    }
+    .nav-links button {
+      margin-left: 15px;
+      background: none;
+      border: 2px solid #fff;
+      border-radius: 20px;
+      padding: 5px 10px;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
     }
 
     .banner {
@@ -99,11 +105,6 @@
       color: #fff;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
     /* Modal */
     .modal {
       display: none;
@@ -126,26 +127,7 @@
       background: rgba(20,20,20,0.9);
       padding: 20px;
       border-radius: 20px;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
       overflow: hidden;
-    }
-    #server-selector {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 30px;
-      background-color: #222;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      outline: none;
-      appearance: none;
-      cursor: pointer;
-    }
-    #player-iframe {
-      width: 100%;
-      height: 70vh;
-      border-radius: 15px;
-      margin-top: 15px;
     }
     .close-btn {
       position: absolute;
@@ -155,10 +137,83 @@
       font-weight: bold;
       color: white;
       cursor: pointer;
-      transition: 0.3s;
+    }
+    #player-iframe {
+      width: 100%;
+      height: 70vh;
+      border-radius: 15px;
+      margin-top: 15px;
+      display: none;
+    }
+    #loading-spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+    }
+    .spinner {
+      border: 8px solid rgba(255, 255, 255, 0.1);
+      border-top: 8px solid #ff0055;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    /* Animated Watch Now Button */
+    #searchResults {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      width: 280px;
+      max-height: 300px;
+      overflow-y: auto;
+      display: none;
+      z-index: 9999;
+      padding: 10px 0;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    }
+    #searchResults div {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #searchResults div:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    #searchResults img {
+      width: 40px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 10px;
+    }
+    #searchResults span {
+      font-size: 14px;
+      color: #fff;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideDown {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    #searchResults.show {
+      animation: slideDown 0.3s ease forwards;
+    }
+
+    /* Watch Now Button */
     .watch-now-btn {
       padding: 10px 20px;
       font-size: 18px;
@@ -187,19 +242,21 @@
     <img src="logo.png" alt="LOGO HERE" />
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <input type="text" class="search-bar" placeholder="Search..." />
+      <input type="text" id="searchInput" placeholder="Search..." oninput="searchTMDB()" autocomplete="off">
+      <button id="themeToggle">🌙 Dark Mode</button>
     </div>
   </div>
 
+  <div id="searchResults"></div>
+
   <div class="banner" id="banner">
-    <h1 id="banner-title">Welcome to iMovieHub🎬</h1>
+    <h1 id="banner-title">Welcome to iMovieHub</h1>
   </div>
 
-  <!-- Watch Now Button -->
   <div style="text-align:center; margin: 20px;">
     <a href="https://confrontationquizmastertrifle.com/z5q38hkgm?key=3b48388bc9ffe20a2d95ef6696912257" target="_blank">
       <button class="watch-now-btn">
-        🎬 Watch Now
+        🎬 Watch Now & Download Full HD Here 🎥
       </button>
     </a>
   </div>
@@ -219,11 +276,15 @@
     <div class="list" id="anime-list"></div>
   </div>
 
-  <!-- Premium Player Modal -->
+  <div class="row">
+    <h2>❤️ My Favorites</h2>
+    <div class="list" id="favorites-list"></div>
+  </div>
+
   <div class="modal" id="player-modal">
     <div class="modal-content">
       <span class="close-btn" onclick="closePlayer()">&times;</span>
-
+      <div id="loading-spinner"><div class="spinner"></div></div>
       <iframe id="player-iframe" src="" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
@@ -239,73 +300,260 @@
     </div>
   </footer>
 
+<!-- SCRIPT AREA -->
 <script>
-  const API_KEY = '2fc7b3876456eb119074d7db7ab5a65a'; // << Replace this
-  const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+const API_KEY = '2fc7b3876456eb119074d7db7ab5a65a'; // << Replace with your TMDb API Key
+const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-  let currentMovieId = null;
-  let currentType = 'movie';
+let currentMovieId = null;
+let currentType = 'movie';
 
-  function openPlayer(id, type = 'movie') {
-    currentMovieId = id;
-    currentType = type;
-    const iframe = document.getElementById('player-iframe');
-    const modal = document.getElementById('player-modal');
+// 🌗 Dark/Light Mode
+const themeButton = document.getElementById('themeToggle');
+let isDark = true;
+themeButton.addEventListener('click', () => {
+  if (isDark) {
+    document.body.style.backgroundColor = '#f4f4f4';
+    document.body.style.color = '#111';
+    themeButton.innerText = '☀️ Light Mode';
+    document.querySelector('.navbar').style.backgroundColor = '#e0e0e0';
+    document.querySelector('.footer').style.backgroundColor = '#e0e0e0';
+    document.getElementById('searchResults').style.background = 'rgba(0, 0, 0, 0.05)';
+  } else {
+    document.body.style.backgroundColor = '#121212';
+    document.body.style.color = '#fff';
+    themeButton.innerText = '🌙 Dark Mode';
+    document.querySelector('.navbar').style.backgroundColor = '#1f1f1f';
+    document.querySelector('.footer').style.backgroundColor = '#1f1f1f';
+    document.getElementById('searchResults').style.background = 'rgba(255, 255, 255, 0.05)';
+  }
+  isDark = !isDark;
+});
 
-    // Always load your link
-    iframe.src = `https://confrontationquizmastertrifle.com/z5q38hkgm?key=3b48388bc9ffe20a2d95ef6696912257`;
+// 🎬 Open player modal
+function openPlayer(id, type = 'movie') {
+  currentMovieId = id;
+  currentType = type;
+  const iframe = document.getElementById('player-iframe');
+  const spinner = document.getElementById('loading-spinner');
+  const modal = document.getElementById('player-modal');
 
-    modal.style.display = 'flex';
+  spinner.style.display = 'flex';
+  iframe.style.display = 'none';
+  iframe.src = `https://confrontationquizmastertrifle.com/z5q38hkgm?key=3b48388bc9ffe20a2d95ef6696912257`;
+
+  iframe.onload = () => {
+    spinner.style.display = 'none';
+    iframe.style.display = 'block';
+  };
+
+  modal.style.display = 'flex';
+}
+
+// ❌ Close player
+function closePlayer() {
+  const modal = document.getElementById('player-modal');
+  const iframe = document.getElementById('player-iframe');
+  modal.style.display = 'none';
+  iframe.src = '';
+}
+
+// 🎥 Fetch Trending Movies
+async function fetchTrendingMovies() {
+  const res = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`);
+  const data = await res.json();
+  const list = document.getElementById('movies-list');
+  data.results.forEach(movie => createMovieCard(movie, list, 'movie'));
+}
+
+// 📺 Fetch Trending TV
+async function fetchTrendingTV() {
+  const res = await fetch(`https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}`);
+  const data = await res.json();
+  const list = document.getElementById('tvshows-list');
+  data.results.forEach(tv => createMovieCard(tv, list, 'tv'));
+}
+
+// 🎎 Fetch Anime (via Jikan API)
+async function fetchTrendingAnime() {
+  const res = await fetch(`https://api.jikan.moe/v4/top/anime`);
+  const data = await res.json();
+  const list = document.getElementById('anime-list');
+  data.data.forEach(anime => createAnimeCard(anime, list));
+}
+
+// 🖼 Create movie/tv poster with Favorite button
+function createMovieCard(item, list, type) {
+  const imgBox = document.createElement('div');
+  imgBox.style.position = 'relative';
+  imgBox.style.display = 'inline-block';
+
+  const img = document.createElement('img');
+  img.src = IMG_URL + item.poster_path;
+  img.alt = item.title || item.name;
+  img.onclick = () => openPlayer(item.id, type);
+
+  const favBtn = document.createElement('button');
+  favBtn.innerHTML = '❤️';
+  favBtn.style.position = 'absolute';
+  favBtn.style.top = '8px';
+  favBtn.style.right = '8px';
+  favBtn.style.background = 'rgba(0,0,0,0.5)';
+  favBtn.style.border = 'none';
+  favBtn.style.borderRadius = '50%';
+  favBtn.style.padding = '5px';
+  favBtn.style.color = 'white';
+  favBtn.style.cursor = 'pointer';
+  favBtn.title = 'Add to Favorites';
+  
+  favBtn.onclick = (e) => {
+    e.stopPropagation();
+    addToFavorites(item, type);
+  };
+
+  imgBox.appendChild(img);
+  imgBox.appendChild(favBtn);
+  list.appendChild(imgBox);
+}
+
+// 🖼 Create Anime Card (no favorites needed)
+function createAnimeCard(anime, list) {
+  const img = document.createElement('img');
+  img.src = anime.images.jpg.image_url;
+  img.alt = anime.title;
+  img.onclick = () => openPlayer(anime.mal_id, 'anime');
+  list.appendChild(img);
+}
+
+// ❤️ Add to Favorites
+function addToFavorites(item, type) {
+  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  if (!favorites.find(m => m.id === item.id)) {
+    favorites.push({ id: item.id, poster_path: item.poster_path, title: item.title || item.name, type });
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    alert('Added to Favorites!');
+    loadFavorites();
+  } else {
+    alert('Already in Favorites!');
+  }
+}
+
+// 📃 Load Favorites
+function loadFavorites() {
+  const favoritesList = document.getElementById('favorites-list');
+  favoritesList.innerHTML = '';
+
+  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  favorites.forEach(movie => {
+    const imgBox = document.createElement('div');
+    imgBox.style.position = 'relative';
+    imgBox.style.display = 'inline-block';
+
+    const img = document.createElement('img');
+    img.src = IMG_URL + movie.poster_path;
+    img.alt = movie.title;
+    img.onclick = () => openPlayer(movie.id, movie.type);
+
+    imgBox.appendChild(img);
+    favoritesList.appendChild(imgBox);
+  });
+}
+
+// 🔍 Live Search Function
+async function searchTMDB() {
+  const query = document.getElementById('searchInput').value.trim();
+  const resultsBox = document.getElementById('searchResults');
+  
+  if (query.length < 2) {
+    resultsBox.style.display = 'none';
+    resultsBox.innerHTML = '';
+    return;
   }
 
-  function closePlayer() {
-    const modal = document.getElementById('player-modal');
-    const iframe = document.getElementById('player-iframe');
-    modal.style.display = 'none';
-    iframe.src = ''; // Stop the video
-  }
+  const res = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
+  const data = await res.json();
 
-  async function fetchTrendingMovies() {
-    const res = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`);
-    const data = await res.json();
-    const list = document.getElementById('movies-list');
-    data.results.forEach(movie => {
+  resultsBox.innerHTML = '';
+  data.results.slice(0, 10).forEach(item => {
+    if (item.poster_path) {
+      const resultItem = document.createElement('div');
+      resultItem.style.padding = '10px';
+      resultItem.style.cursor = 'pointer';
+      resultItem.style.display = 'flex';
+      resultItem.style.alignItems = 'center';
+      resultItem.style.borderBottom = '1px solid #333';
+      
       const img = document.createElement('img');
-      img.src = IMG_URL + movie.poster_path;
-      img.alt = movie.title;
-      img.onclick = () => openPlayer(movie.id, 'movie');
-      list.appendChild(img);
-    });
-  }
+      img.src = IMG_URL + item.poster_path;
+      img.style.width = '40px';
+      img.style.height = '60px';
+      img.style.objectFit = 'cover';
+      img.style.borderRadius = '5px';
+      img.style.marginRight = '10px';
 
-  async function fetchTrendingTV() {
-    const res = await fetch(`https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}`);
-    const data = await res.json();
-    const list = document.getElementById('tvshows-list');
-    data.results.forEach(tv => {
-      const img = document.createElement('img');
-      img.src = IMG_URL + tv.poster_path;
-      img.alt = tv.name;
-      img.onclick = () => openPlayer(tv.id, 'tv');
-      list.appendChild(img);
-    });
-  }
+      const title = document.createElement('span');
+      title.innerText = item.title || item.name || 'No Title';
+      title.style.fontSize = '14px';
+      title.style.color = '#fff';
 
-  async function fetchTrendingAnime() {
-    const res = await fetch(`https://api.jikan.moe/v4/top/anime`);
-    const data = await res.json();
-    const list = document.getElementById('anime-list');
-    data.data.forEach(anime => {
-      const img = document.createElement('img');
-      img.src = anime.images.jpg.image_url;
-      img.alt = anime.title;
-      list.appendChild(img);
-    });
-  }
+      resultItem.appendChild(img);
+      resultItem.appendChild(title);
+      resultItem.onclick = () => openPlayer(item.id, item.media_type);
 
-  fetchTrendingMovies();
-  fetchTrendingTV();
-  fetchTrendingAnime();
+      resultsBox.appendChild(resultItem);
+    }
+  });
+
+  resultsBox.classList.add('show');
+  resultsBox.style.display = 'block';
+}
+
+// 🎯 Keyboard Navigation inside Search
+let searchIndex = -1;
+document.addEventListener('keydown', function(e) {
+  const resultsBox = document.getElementById('searchResults');
+  const items = resultsBox.querySelectorAll('div');
+
+  if (resultsBox.style.display === 'block' && items.length > 0) {
+    if (e.key === "ArrowDown") {
+      searchIndex = (searchIndex + 1) % items.length;
+      highlightResult(items);
+    } 
+    else if (e.key === "ArrowUp") {
+      searchIndex = (searchIndex - 1 + items.length) % items.length;
+      highlightResult(items);
+    }
+    else if (e.key === "Enter") {
+      if (searchIndex >= 0) {
+        items[searchIndex].click();
+      }
+    }
+  }
+});
+
+function highlightResult(items) {
+  items.forEach((item, index) => {
+    item.style.background = index === searchIndex ? 'rgba(255, 255, 255, 0.2)' : 'transparent';
+  });
+}
+
+// ❌ Click outside to close search
+document.addEventListener('click', function(event) {
+  const searchBox = document.getElementById('searchInput');
+  const resultsBox = document.getElementById('searchResults');
+  
+  if (!searchBox.contains(event.target) && !resultsBox.contains(event.target)) {
+    resultsBox.style.display = 'none';
+    resultsBox.classList.remove('show');
+    searchIndex = -1;
+  }
+});
+
+// 🚀 Start!
+fetchTrendingMovies();
+fetchTrendingTV();
+fetchTrendingAnime();
+loadFavorites();
 </script>
 
 </body>
