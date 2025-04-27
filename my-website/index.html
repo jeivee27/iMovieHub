@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -12,8 +13,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>iMovieHub🎬</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -22,6 +25,7 @@
       margin: 0;
       padding: 0;
     }
+
     .navbar {
       display: flex;
       align-items: center;
@@ -43,6 +47,7 @@
       border-radius: 5px;
       border: none;
     }
+
     .banner {
       height: 300px;
       background: linear-gradient(to bottom, #333, #000);
@@ -55,6 +60,7 @@
       font-size: 2.5rem;
       font-weight: 700;
     }
+
     .row {
       padding: 2rem;
     }
@@ -65,16 +71,19 @@
       display: flex;
       overflow-x: auto;
       gap: 1rem;
+      padding-bottom: 1rem;
     }
     .list img {
       height: 200px;
       border-radius: 10px;
       transition: transform 0.3s;
       object-fit: cover;
+      cursor: pointer;
     }
     .list img:hover {
       transform: scale(1.05);
     }
+
     .footer {
       background-color: #1f1f1f;
       text-align: center;
@@ -89,26 +98,81 @@
     .footer-links a:hover {
       color: #fff;
     }
-    .modal, .search-modal {
-      background: rgba(0, 0, 0, 0.9);
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-    iframe {
-      border-radius: 10px;
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 1000;
+      animation: fadeIn 0.5s;
+    }
+    .modal-content {
+      width: 80%;
+      position: relative;
+      background: rgba(20,20,20,0.9);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      overflow: hidden;
+    }
+    #server-selector {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 30px;
+      background-color: #222;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      outline: none;
+      appearance: none;
+      cursor: pointer;
+    }
+    #player-iframe {
+      width: 100%;
+      height: 70vh;
+      border-radius: 15px;
+      margin-top: 15px;
+    }
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 35px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
     }
   </style>
+
 </head>
 
 <body>
+
   <div class="navbar">
     <img src="logo.png" alt="LOGO HERE" />
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <input type="text" class="search-bar" placeholder="Search..." onfocus="openSearchModal()" />
+      <input type="text" class="search-bar" placeholder="Search..." />
     </div>
   </div>
 
   <div class="banner" id="banner">
-    <h1 id="banner-title">Welcome to iMovieHub</h1>
+    <h1 id="banner-title">Welcome to iMovieHub🎥</h1>
   </div>
 
   <div class="row">
@@ -126,6 +190,23 @@
     <div class="list" id="anime-list"></div>
   </div>
 
+  <!-- Premium Player Modal -->
+  <div class="modal" id="player-modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closePlayer()">&times;</span>
+
+      <div style="text-align:center; margin-bottom:10px;">
+        <select id="server-selector" onchange="changeServer()">
+          <option value="vidsrc.to">vidsrc.to</option>
+          <option value="vidsrc.me">vidsrc.me</option>
+          <option value="player.videasy.net">player.videasy.net</option>
+        </select>
+      </div>
+
+      <iframe id="player-iframe" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="footer-content">
       <p>&copy; 2025 iMovieHub. All rights reserved.</p>
@@ -137,9 +218,39 @@
     </div>
   </footer>
 
-  <script>
-  const API_KEY = '2fc7b3876456eb119074d7db7ab5a65a';
+<script>
+  const API_KEY = '2fc7b3876456eb119074d7db7ab5a65a'; // << Replace with your TMDb API Key
   const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+
+  let currentMovieId = null;
+  let currentType = 'movie';
+
+  function openPlayer(id, type = 'movie') {
+    currentMovieId = id;
+    currentType = type;
+    const iframe = document.getElementById('player-iframe');
+    const modal = document.getElementById('player-modal');
+    const server = document.getElementById('server-selector').value;
+    iframe.src = buildURL(server, id, type);
+    modal.style.display = 'flex';
+  }
+
+  function buildURL(server, id, type) {
+    return `https://${server}/embed/${type}/${id}`;
+  }
+
+  function changeServer() {
+    const server = document.getElementById('server-selector').value;
+    const iframe = document.getElementById('player-iframe');
+    iframe.src = buildURL(server, currentMovieId, currentType);
+  }
+
+  function closePlayer() {
+    const modal = document.getElementById('player-modal');
+    const iframe = document.getElementById('player-iframe');
+    modal.style.display = 'none';
+    iframe.src = ''; // Stop the video when closing
+  }
 
   async function fetchTrendingMovies() {
     const res = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`);
@@ -149,23 +260,9 @@
       const img = document.createElement('img');
       img.src = IMG_URL + movie.poster_path;
       img.alt = movie.title;
-      img.style.cursor = 'pointer';
-      img.onclick = () => openTrailer(movie.id);
+      img.onclick = () => openPlayer(movie.id, 'movie');
       list.appendChild(img);
     });
-  }
-
-  async function openTrailer(movieId) {
-    const res = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`);
-    const data = await res.json();
-    const trailers = data.results.filter(video => video.type === 'Trailer' && video.site === 'YouTube');
-    
-    if (trailers.length > 0) {
-      const youtubeKey = trailers[0].key;
-      window.open(`https://www.youtube.com/watch?v=${youtubeKey}`, '_blank');
-    } else {
-      alert('Trailer not available.');
-    }
   }
 
   async function fetchTrendingTV() {
@@ -176,23 +273,9 @@
       const img = document.createElement('img');
       img.src = IMG_URL + tv.poster_path;
       img.alt = tv.name;
-      img.style.cursor = 'pointer';
-      img.onclick = () => openTrailerTV(tv.id);
+      img.onclick = () => openPlayer(tv.id, 'tv');
       list.appendChild(img);
     });
-  }
-
-  async function openTrailerTV(tvId) {
-    const res = await fetch(`https://api.themoviedb.org/3/tv/${tvId}/videos?api_key=${API_KEY}`);
-    const data = await res.json();
-    const trailers = data.results.filter(video => video.type === 'Trailer' && video.site === 'YouTube');
-
-    if (trailers.length > 0) {
-      const youtubeKey = trailers[0].key;
-      window.open(`https://www.youtube.com/watch?v=${youtubeKey}`, '_blank');
-    } else {
-      alert('Trailer not available.');
-    }
   }
 
   async function fetchTrendingAnime() {
