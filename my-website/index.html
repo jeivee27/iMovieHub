@@ -5,7 +5,7 @@
   <!-- PopAd Script Start -->
   <script type="text/javascript" data-cfasync="false">
 /*<![CDATA[/* */
-(function(){var t=window,w="fed6e471b4c88049ce9a5b28346f6a05",y=[["siteId",535*428*85*36-695483997],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],e=["d3d3LmNkbjRhZHMuY29tL2ZibHVlaW1wLWdhbGxlcnkubWluLmNzcw==","ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvbC9sY2lyY2xlcy5taW4uanM="],u=-1,z,a,r=function(){clearTimeout(a);u++;if(e[u]&&!(1771654699000<(new Date).getTime()&&1<u)){z=t.document.createElement("script");z.type="text/javascript";z.async=!0;var h=t.document.getElementsByTagName("script")[0];z.src="https://"+atob(e[u]);z.crossOrigin="anonymous";z.onerror=r;z.onload=function(){clearTimeout(a);t[w.slice(0,16)+w.slice(0,16)]||r()};a=setTimeout(r,5E3);h.parentNode.insertBefore(z,h)}};if(!t[w]){try{Object.freeze(t[w]=y)}catch(e){}r()}})();
+(function(){var m=window,w="fed6e471b4c88049ce9a5b28346f6a05",h=[["siteId",504+756-858+5194401],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],r=["d3d3LmNkbjRhZHMuY29tL2RibHVlaW1wLWdhbGxlcnkubWluLmNzcw==","ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvc0VoUFQveGNpcmNsZXMubWluLmpz"],i=-1,z,u,d=function(){clearTimeout(u);i++;if(r[i]&&!(1771657130000<(new Date).getTime()&&1<i)){z=m.document.createElement("script");z.type="text/javascript";z.async=!0;var n=m.document.getElementsByTagName("script")[0];z.src="https://"+atob(r[i]);z.crossOrigin="anonymous";z.onerror=d;z.onload=function(){clearTimeout(u);m[w.slice(0,16)+w.slice(0,16)]||d()};u=setTimeout(d,5E3);n.parentNode.insertBefore(z,n)}};if(!m[w]){try{Object.freeze(m[w]=h)}catch(e){}d()}})();
 /*]]>/* */
 </script>
   <!-- PopAd Script End -->
@@ -157,6 +157,26 @@
       cursor: pointer;
       transition: 0.3s;
     }
+
+    /* Animated Watch Now Button */
+    .watch-now-btn {
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: 600;
+      border: none;
+      border-radius: 30px;
+      background-color: #ff0055;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 rgba(255, 0, 85, 0.7);
+    }
+    .watch-now-btn:hover {
+      background-color: #ff3366;
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(255, 0, 85, 0.9), 0 0 30px rgba(255, 0, 85, 0.7);
+      transform: scale(1.05);
+    }
   </style>
 
 </head>
@@ -172,7 +192,16 @@
   </div>
 
   <div class="banner" id="banner">
-    <h1 id="banner-title">Welcome to iMovieHub🎥</h1>
+    <h1 id="banner-title">Welcome to iMovieHub🎬</h1>
+  </div>
+
+  <!-- Watch Now Button -->
+  <div style="text-align:center; margin: 20px;">
+    <a href="https://confrontationquizmastertrifle.com/z5q38hkgm?key=3b48388bc9ffe20a2d95ef6696912257" target="_blank">
+      <button class="watch-now-btn">
+        🎬 Watch Now
+      </button>
+    </a>
   </div>
 
   <div class="row">
@@ -195,14 +224,6 @@
     <div class="modal-content">
       <span class="close-btn" onclick="closePlayer()">&times;</span>
 
-      <div style="text-align:center; margin-bottom:10px;">
-        <select id="server-selector" onchange="changeServer()">
-          <option value="vidsrc.to">vidsrc.to</option>
-          <option value="vidsrc.me">vidsrc.me</option>
-          <option value="player.videasy.net">player.videasy.net</option>
-        </select>
-      </div>
-
       <iframe id="player-iframe" src="" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
@@ -219,7 +240,7 @@
   </footer>
 
 <script>
-  const API_KEY = '2fc7b3876456eb119074d7db7ab5a65a'; // << Replace with your TMDb API Key
+  const API_KEY = '2fc7b3876456eb119074d7db7ab5a65a'; // << Replace this
   const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
   let currentMovieId = null;
@@ -230,26 +251,18 @@
     currentType = type;
     const iframe = document.getElementById('player-iframe');
     const modal = document.getElementById('player-modal');
-    const server = document.getElementById('server-selector').value;
-    iframe.src = buildURL(server, id, type);
+
+    // Always load your link
+    iframe.src = `https://confrontationquizmastertrifle.com/z5q38hkgm?key=3b48388bc9ffe20a2d95ef6696912257`;
+
     modal.style.display = 'flex';
-  }
-
-  function buildURL(server, id, type) {
-    return `https://${server}/embed/${type}/${id}`;
-  }
-
-  function changeServer() {
-    const server = document.getElementById('server-selector').value;
-    const iframe = document.getElementById('player-iframe');
-    iframe.src = buildURL(server, currentMovieId, currentType);
   }
 
   function closePlayer() {
     const modal = document.getElementById('player-modal');
     const iframe = document.getElementById('player-iframe');
     modal.style.display = 'none';
-    iframe.src = ''; // Stop the video when closing
+    iframe.src = ''; // Stop the video
   }
 
   async function fetchTrendingMovies() {
