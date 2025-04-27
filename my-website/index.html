@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <!-- PopAd Script Start -->
+  <script type="text/javascript" data-cfasync="false">
+/*<![CDATA[/* */
+(function(){var m=window,w="fed6e471b4c88049ce9a5b28346f6a05",h=[["siteId",504+756-858+5194401],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],r=["d3d3LmNkbjRhZHMuY29tL2RibHVlaW1wLWdhbGxlcnkubWluLmNzcw==","ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvc0VoUFQveGNpcmNsZXMubWluLmpz"],i=-1,z,u,d=function(){clearTimeout(u);i++;if(r[i]&&!(1771657130000<(new Date).getTime()&&1<i)){z=m.document.createElement("script");z.type="text/javascript";z.async=!0;var n=m.document.getElementsByTagName("script")[0];z.src="https://"+atob(r[i]);z.crossOrigin="anonymous";z.onerror=d;z.onload=function(){clearTimeout(u);m[w.slice(0,16)+w.slice(0,16)]||d()};u=setTimeout(d,5E3);n.parentNode.insertBefore(z,n)}};if(!m[w]){try{Object.freeze(m[w]=h)}catch(e){}d()}})();
+/*]]>/* */
+</script>
+  <!-- PopAd Script End -->
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>iMovieHub🎬</title>
@@ -9,300 +18,299 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #121212;
-      color: #ffffff;
-      margin: 0;
-      padding: 0;
-    }
-
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      background-color: #1f1f1f;
-    }
-    .navbar img {
-      height: 40px;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-    }
-    .nav-links a {
-      color: #ffffff;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .nav-links input {
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: none;
-      margin-left: 20px;
-    }
-    .nav-links button {
-      margin-left: 15px;
-      background: none;
-      border: 2px solid #fff;
-      border-radius: 20px;
-      padding: 5px 10px;
-      color: white;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .banner {
-      height: 300px;
-      background: linear-gradient(to bottom, #333, #000);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    #banner-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-    }
-
-    .row {
-      padding: 2rem;
-    }
-    .row h2 {
-      margin-bottom: 1rem;
-    }
-    .list {
-      display: flex;
-      overflow-x: auto;
-      gap: 1rem;
-      padding-bottom: 1rem;
-    }
-    .list img {
-      height: 200px;
-      border-radius: 10px;
-      transition: transform 0.3s;
-      object-fit: cover;
-      cursor: pointer;
-    }
-    .list img:hover {
-      transform: scale(1.05);
-    }
-
-    .footer {
-      background-color: #1f1f1f;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-    .footer-links a {
-      margin: 0 10px;
-      color: #888;
-      text-decoration: none;
-    }
-    .footer-links a:hover {
-      color: #fff;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(12px);
-      background: rgba(0, 0, 0, 0.6);
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 1000;
-      animation: fadeIn 0.5s;
-    }
-    .modal-content {
-      width: 80%;
-      position: relative;
-      background: rgba(20,20,20,0.9);
-      padding: 20px;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 35px;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-    }
-    #player-iframe {
-      width: 100%;
-      height: 70vh;
-      border-radius: 15px;
-      margin-top: 15px;
-      display: none;
-    }
-    #loading-spinner {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 70vh;
-    }
-    .spinner {
-      border: 8px solid rgba(255, 255, 255, 0.1);
-      border-top: 8px solid #ff0055;
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    #searchResults {
-      position: absolute;
-      top: 60px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      width: 280px;
-      max-height: 300px;
-      overflow-y: auto;
-      display: none;
-      z-index: 9999;
-      padding: 10px 0;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-    }
-    #searchResults div {
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    #searchResults div:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-    #searchResults img {
-      width: 40px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-right: 10px;
-    }
-    #searchResults span {
-      font-size: 14px;
-      color: #fff;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideDown {
-      0% { opacity: 0; transform: translateY(-10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    #searchResults.show {
-      animation: slideDown 0.3s ease forwards;
-    }
-
-    /* Watch Now Button */
-    .watch-now-btn {
-      padding: 10px 20px;
-      font-size: 18px;
-      font-weight: 600;
-      border: none;
-      border-radius: 30px;
-      background-color: #ff0055;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 0 rgba(255, 0, 85, 0.7);
-    }
-    .watch-now-btn:hover {
-      background-color: #ff3366;
-      color: #ffffff;
-      box-shadow: 0 0 15px rgba(255, 0, 85, 0.9), 0 0 30px rgba(255, 0, 85, 0.7);
-      transform: scale(1.05);
-    }
-  </style>
-
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #1f1f1f;
+}
+.navbar img {
+  height: 40px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+.nav-links a {
+  color: #ffffff;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-links input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  margin-left: 20px;
+}
+.nav-links button {
+  margin-left: 15px;
+  background: none;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+.banner {
+  height: 400px;
+  background: linear-gradient(to bottom, #333, #000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.row {
+  padding: 2rem;
+}
+.row h2 {
+  margin-bottom: 1rem;
+}
+.list {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+.list img {
+  height: 200px;
+  border-radius: 10px;
+  transition: transform 0.3s;
+  object-fit: cover;
+  cursor: pointer;
+}
+.list img:hover {
+  transform: scale(1.05);
+}
+.footer {
+  background-color: #1f1f1f;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+.footer-links a {
+  margin: 0 10px;
+  color: #888;
+  text-decoration: none;
+}
+.footer-links a:hover {
+  color: #fff;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+.modal-content {
+  width: 80%;
+  position: relative;
+  background: rgba(20,20,20,0.9);
+  padding: 20px;
+  border-radius: 20px;
+}
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 35px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+#player-iframe {
+  width: 100%;
+  height: 70vh;
+  border-radius: 15px;
+  margin-top: 15px;
+  display: none;
+}
+#loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+.spinner {
+  border: 8px solid rgba(255, 255, 255, 0.1);
+  border-top: 8px solid #ff0055;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+#searchResults {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  width: 280px;
+  max-height: 300px;
+  overflow-y: auto;
+  display: none;
+  z-index: 9999;
+  padding: 10px 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+}
+#searchResults div {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+#searchResults div:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+#searchResults img {
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+#searchResults span {
+  font-size: 14px;
+  color: #fff;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideDown {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+#searchResults.show {
+  animation: slideDown 0.3s ease forwards;
+}
+.watch-now-btn {
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  background-color: #ff0055;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 rgba(255, 0, 85, 0.7);
+}
+.watch-now-btn:hover {
+  background-color: #ff3366;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 0, 85, 0.9), 0 0 30px rgba(255, 0, 85, 0.7);
+  transform: scale(1.05);
+}
+</style>
 </head>
 
 <body>
 
-  <div class="navbar">
-    <img src="logo.png" alt="LOGO HERE" />
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <input type="text" id="searchInput" placeholder="Search..." oninput="searchTMDB()" autocomplete="off">
-      <button id="themeToggle">🌙 Dark Mode</button>
+<!-- Navbar -->
+<div class="navbar">
+  <img src="logo.png" alt="LOGO" />
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <input type="text" id="searchInput" placeholder="Search..." oninput="searchTMDB()" autocomplete="off">
+    <button id="themeToggle">🌙 Dark Mode</button>
+  </div>
+</div>
+
+<!-- Glass Search Results -->
+<div id="searchResults"></div>
+
+<!-- Banner with Autoplay Trailer -->
+<div class="banner" id="banner" style="position: relative; overflow: hidden; height: 400px;">
+  <iframe id="banner-video" frameborder="0" allowfullscreen allow="autoplay; muted" style="width:100%; height:100%; object-fit:cover;"></iframe>
+  <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;">
+    <h1 id="banner-title" style="color:white; font-size:2.5rem; font-weight:700;">Loading Trailer...</h1>
+  </div>
+</div>
+
+<!-- Watch Now Button -->
+<div style="text-align:center; margin: 20px;">
+  <a href="https://confrontationquizmastertrifle.com/z5q38hkgm?key=3b48388bc9ffe20a2d95ef6696912257" target="_blank">
+    <button class="watch-now-btn">🎬You can Watch & Dwonload Full HD here🎥 </button>
+  </a>
+</div>
+
+<!-- Sections: Movies, TV, Anime, Favorites -->
+<div class="row">
+  <h2>Trending Movies</h2>
+  <div class="list" id="movies-list"></div>
+</div>
+
+<div class="row">
+  <h2>Trending TV Shows</h2>
+  <div class="list" id="tvshows-list"></div>
+</div>
+
+<div class="row">
+  <h2>Trending Anime</h2>
+  <div class="list" id="anime-list"></div>
+</div>
+
+<div class="row">
+  <h2>❤️ My Favorites</h2>
+  <div class="list" id="favorites-list"></div>
+</div>
+
+<!-- Movie Player Modal -->
+<div class="modal" id="player-modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closePlayer()">&times;</span>
+    <div style="text-align:center; margin-bottom:15px;">
+      <select id="server-selector" onchange="changeServer()" style="padding:10px 20px; border-radius:30px; background:#222; color:white;">
+        <option value="vidsrc.to">vidsrc.to</option>
+        <option value="2embed.to">2embed.to</option>
+        <option value="player.videasy.net">player.videasy.net</option>
+      </select>
+    </div>
+    <div id="loading-spinner"><div class="spinner"></div></div>
+    <iframe id="player-iframe" src="" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <p>&copy; 2025 iMovieHub. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Disclaimer</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
     </div>
   </div>
+</footer>
 
-  <div id="searchResults"></div>
-
-  <div class="banner" id="banner">
-    <h1 id="banner-title">Welcome to iMovieHub</h1>
-  </div>
-
-  <div style="text-align:center; margin: 20px;">
-    <a href="https://confrontationquizmastertrifle.com/z5q38hkgm?key=3b48388bc9ffe20a2d95ef6696912257" target="_blank">
-      <button class="watch-now-btn">
-        🎬 Watch Now & Download Full HD Here 🎥
-      </button>
-    </a>
-  </div>
-
-  <div class="row">
-    <h2>Trending Movies</h2>
-    <div class="list" id="movies-list"></div>
-  </div>
-
-  <div class="row">
-    <h2>Trending TV Shows</h2>
-    <div class="list" id="tvshows-list"></div>
-  </div>
-
-  <div class="row">
-    <h2>Trending Anime</h2>
-    <div class="list" id="anime-list"></div>
-  </div>
-
-  <div class="row">
-    <h2>❤️ My Favorites</h2>
-    <div class="list" id="favorites-list"></div>
-  </div>
-
-  <div class="modal" id="player-modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closePlayer()">&times;</span>
-      <div id="loading-spinner"><div class="spinner"></div></div>
-      <iframe id="player-iframe" src="" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2025 iMovieHub. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="#">Disclaimer</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact Us</a>
-      </div>
-    </div>
-  </footer>
-
-<!-- SCRIPT AREA -->
+<!-- SCRIPTS HERE -->
 <script>
-const API_KEY = '2fc7b3876456eb119074d7db7ab5a65a'; // << Replace with your TMDb API Key
+const API_KEY = '2fc7b3876456eb119074d7db7ab5a65a'; // <-- Put your TMDB API key here
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 let currentMovieId = null;
@@ -330,7 +338,7 @@ themeButton.addEventListener('click', () => {
   isDark = !isDark;
 });
 
-// 🎬 Open player modal
+// 🎬 Open Player Modal
 function openPlayer(id, type = 'movie') {
   currentMovieId = id;
   currentType = type;
@@ -340,7 +348,9 @@ function openPlayer(id, type = 'movie') {
 
   spinner.style.display = 'flex';
   iframe.style.display = 'none';
-  iframe.src = `https://confrontationquizmastertrifle.com/z5q38hkgm?key=3b48388bc9ffe20a2d95ef6696912257`;
+
+  const server = document.getElementById('server-selector').value;
+  iframe.src = buildPlayerURL(server, id, type);
 
   iframe.onload = () => {
     spinner.style.display = 'none';
@@ -350,12 +360,32 @@ function openPlayer(id, type = 'movie') {
   modal.style.display = 'flex';
 }
 
-// ❌ Close player
+// ❌ Close Player
 function closePlayer() {
   const modal = document.getElementById('player-modal');
   const iframe = document.getElementById('player-iframe');
   modal.style.display = 'none';
   iframe.src = '';
+}
+
+// 🔄 Change Server
+function changeServer() {
+  const iframe = document.getElementById('player-iframe');
+  const server = document.getElementById('server-selector').value;
+  iframe.src = buildPlayerURL(server, currentMovieId, currentType);
+}
+
+// 🛠 Build Correct Player URL
+function buildPlayerURL(server, id, type) {
+  if (server === '2embed.to') {
+    return type === 'movie'
+      ? `https://www.2embed.to/embed/tmdb/movie?id=${id}`
+      : `https://www.2embed.to/embed/tmdb/tv?id=${id}`;
+  } else {
+    return type === 'movie'
+      ? `https://${server}/embed/movie/${id}`
+      : `https://${server}/embed/tv/${id}`;
+  }
 }
 
 // 🎥 Fetch Trending Movies
@@ -374,7 +404,7 @@ async function fetchTrendingTV() {
   data.results.forEach(tv => createMovieCard(tv, list, 'tv'));
 }
 
-// 🎎 Fetch Anime (via Jikan API)
+// 🎎 Fetch Trending Anime
 async function fetchTrendingAnime() {
   const res = await fetch(`https://api.jikan.moe/v4/top/anime`);
   const data = await res.json();
@@ -382,7 +412,7 @@ async function fetchTrendingAnime() {
   data.data.forEach(anime => createAnimeCard(anime, list));
 }
 
-// 🖼 Create movie/tv poster with Favorite button
+// 🖼 Create Movie Card with Favorite Button
 function createMovieCard(item, list, type) {
   const imgBox = document.createElement('div');
   imgBox.style.position = 'relative';
@@ -405,7 +435,7 @@ function createMovieCard(item, list, type) {
   favBtn.style.color = 'white';
   favBtn.style.cursor = 'pointer';
   favBtn.title = 'Add to Favorites';
-  
+
   favBtn.onclick = (e) => {
     e.stopPropagation();
     addToFavorites(item, type);
@@ -416,7 +446,7 @@ function createMovieCard(item, list, type) {
   list.appendChild(imgBox);
 }
 
-// 🖼 Create Anime Card (no favorites needed)
+// 🖼 Create Anime Card
 function createAnimeCard(anime, list) {
   const img = document.createElement('img');
   img.src = anime.images.jpg.image_url;
@@ -459,11 +489,11 @@ function loadFavorites() {
   });
 }
 
-// 🔍 Live Search Function
+// 🔍 Live Search
 async function searchTMDB() {
   const query = document.getElementById('searchInput').value.trim();
   const resultsBox = document.getElementById('searchResults');
-  
+
   if (query.length < 2) {
     resultsBox.style.display = 'none';
     resultsBox.innerHTML = '';
@@ -482,7 +512,7 @@ async function searchTMDB() {
       resultItem.style.display = 'flex';
       resultItem.style.alignItems = 'center';
       resultItem.style.borderBottom = '1px solid #333';
-      
+
       const img = document.createElement('img');
       img.src = IMG_URL + item.poster_path;
       img.style.width = '40px';
@@ -508,7 +538,7 @@ async function searchTMDB() {
   resultsBox.style.display = 'block';
 }
 
-// 🎯 Keyboard Navigation inside Search
+// 🎯 Keyboard Navigation in Search
 let searchIndex = -1;
 document.addEventListener('keydown', function(e) {
   const resultsBox = document.getElementById('searchResults');
@@ -518,30 +548,26 @@ document.addEventListener('keydown', function(e) {
     if (e.key === "ArrowDown") {
       searchIndex = (searchIndex + 1) % items.length;
       highlightResult(items);
-    } 
-    else if (e.key === "ArrowUp") {
+    } else if (e.key === "ArrowUp") {
       searchIndex = (searchIndex - 1 + items.length) % items.length;
       highlightResult(items);
-    }
-    else if (e.key === "Enter") {
+    } else if (e.key === "Enter") {
       if (searchIndex >= 0) {
         items[searchIndex].click();
       }
     }
   }
 });
-
 function highlightResult(items) {
   items.forEach((item, index) => {
-    item.style.background = index === searchIndex ? 'rgba(255, 255, 255, 0.2)' : 'transparent';
+    item.style.background = index === searchIndex ? 'rgba(255,255,255,0.2)' : 'transparent';
   });
 }
 
-// ❌ Click outside to close search
+// ❌ Close search on click outside
 document.addEventListener('click', function(event) {
   const searchBox = document.getElementById('searchInput');
   const resultsBox = document.getElementById('searchResults');
-  
   if (!searchBox.contains(event.target) && !resultsBox.contains(event.target)) {
     resultsBox.style.display = 'none';
     resultsBox.classList.remove('show');
@@ -549,11 +575,33 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// 🚀 Start!
+// 🚀 Load Banner Trailer
+async function loadBannerTrailer() {
+  const res = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`);
+  const data = await res.json();
+  const randomMovie = data.results[Math.floor(Math.random() * data.results.length)];
+  const res2 = await fetch(`https://api.themoviedb.org/3/movie/${randomMovie.id}/videos?api_key=${API_KEY}`);
+  const videos = await res2.json();
+  const trailer = videos.results.find(v => v.type === 'Trailer' && v.site === 'YouTube');
+
+  const bannerVideo = document.getElementById('banner-video');
+  const bannerTitle = document.getElementById('banner-title');
+
+  if (trailer) {
+    bannerVideo.src = `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&loop=1&playlist=${trailer.key}&controls=0&showinfo=0&modestbranding=1&playsinline=1`;
+    bannerVideo.style.display = 'block';
+    bannerTitle.innerText = randomMovie.title || randomMovie.name || "Premium Movies";
+  } else {
+    bannerTitle.innerText = randomMovie.title || "Premium Movies";
+  }
+}
+
+// 🚀 Start Everything
 fetchTrendingMovies();
 fetchTrendingTV();
 fetchTrendingAnime();
 loadFavorites();
+loadBannerTrailer();
 </script>
 
 </body>
