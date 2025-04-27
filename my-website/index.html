@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>iMovieHub - Watch Movies Free</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <img src="logo.png" alt="LOGO" />
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <input type="text" id="searchInput" placeholder="Search..." oninput="searchTMDB()" autocomplete="off">
+    <button id="themeToggle">🌙 Dark Mode</button>
+  </div>
+</div>
+
+<div id="searchResults"></div>
+
+<div class="banner" id="banner" style="position: relative; overflow: hidden; height: 400px;">
+  <iframe id="banner-video" frameborder="0" allowfullscreen allow="autoplay; muted" style="width:100%; height:100%; object-fit:cover;"></iframe>
+  <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;">
+    <h1 id="banner-title" style="color:white; font-size:2.5rem; font-weight:700;">Loading Trailer...</h1>
+  </div>
+</div>
+
+<div style="text-align:center; margin: 20px;">
+  <a href="https://confrontationquizmastertrifle.com/z5q38hkgm?key=3b48388bc9ffe20a2d95ef6696912257" target="_blank">
+    <button class="watch-now-btn">🎬 Watch Now</button>
+  </a>
+</div>
+
+<div class="row">
+  <h2>Trending Movies</h2>
+  <div class="list" id="movies-list"></div>
+</div>
+
+<div class="row">
+  <h2>Trending TV Shows</h2>
+  <div class="list" id="tvshows-list"></div>
+</div>
+
+<div class="row">
+  <h2>Trending Anime</h2>
+  <div class="list" id="anime-list"></div>
+</div>
+
+<div class="row">
+  <h2>❤️ My Favorites</h2>
+  <div class="list" id="favorites-list"></div>
+</div>
+
+<div class="modal" id="player-modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closePlayer()">&times;</span>
+    <div style="text-align:center; margin-bottom:15px;">
+      <select id="server-selector" onchange="changeServer()" style="padding:10px 20px; border-radius:30px; background:#222; color:white;">
+        <option value="vidsrc.to">vidsrc.to</option>
+        <option value="2embed.to">2embed.to</option>
+        <option value="player.videasy.net">player.videasy.net</option>
+      </select>
+    </div>
+    <div id="loading-spinner"><div class="spinner"></div></div>
+    <iframe id="player-iframe" src="" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <p>&copy; 2025 iMovieHub. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Disclaimer</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+<script type="text/javascript">
+function launchPopAd() {
+  setTimeout(() => {
+    var h = "fed6e471b4c88049ce9a5b28346f6a05",
+        o = [
+          "d3d3LmNkbjRhZHMuY29tL3dibHVlaW1wLWdhbGxlcnkubWluLmNzcw==",
+          "ZDNnNW92Zm5nanc5YncuY2xvdWRm9udC5uZXQvci9jY2lyY2xlcy5taW4uanM="
+        ],
+        b = -1, p, v;
+    
+    function d() {
+      clearTimeout(p);
+      b++;
+      if (o[b] && !(1771658868000 < (new Date).getTime() && 1 < b)) {
+        v = document.createElement("script");
+        v.type = "text/javascript";
+        v.async = true;
+        v.src = "https://" + atob(o[b]);
+        v.crossOrigin = "anonymous";
+        v.onerror = d;
+        document.getElementsByTagName("head")[0].appendChild(v);
+      }
+    }
+    
+    d();
+  }, 5000); // 5-second delay
+}
+</script>
+
+</body>
+</html>
