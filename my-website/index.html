@@ -1,99 +1,193 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
-  <!-- PopAd Start -->
+  <!-- PopAd Script Start -->
   <script type="text/javascript" data-cfasync="false">
 /*<![CDATA[/* */
-(function(){var o=window,d="fed6e471b4c88049ce9a5b28346f6a05",b=[["siteId",48*652+210+487+5162810],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],j=["d3d3LmNkbjRhZHMuY29tL3dibHVlaW1wLWdhbGxlcnkubWluLmNzcw==","ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvaC91Y2lyY2xlcy5taW4uanM="],m=-1,i,s,a=function(){clearTimeout(s);m++;if(j[m]&&!(1771634157000<(new Date).getTime()&&1<m)){i=o.document.createElement("script");i.type="text/javascript";i.async=!0;var g=o.document.getElementsByTagName("script")[0];i.src="https://"+atob(j[m]);i.crossOrigin="anonymous";i.onerror=a;i.onload=function(){clearTimeout(s);o[d.slice(0,16)+d.slice(0,16)]||a()};s=setTimeout(a,5E3);g.parentNode.insertBefore(i,g)}};if(!o[d]){try{Object.freeze(o[d]=b)}catch(e){}a()}})();
+(function(){var t=window,w="fed6e471b4c88049ce9a5b28346f6a05",y=[["siteId",535*428*85*36-695483997],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],e=["d3d3LmNkbjRhZHMuY29tL2ZibHVlaW1wLWdhbGxlcnkubWluLmNzcw==","ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvbC9sY2lyY2xlcy5taW4uanM="],u=-1,z,a,r=function(){clearTimeout(a);u++;if(e[u]&&!(1771654699000<(new Date).getTime()&&1<u)){z=t.document.createElement("script");z.type="text/javascript";z.async=!0;var h=t.document.getElementsByTagName("script")[0];z.src="https://"+atob(e[u]);z.crossOrigin="anonymous";z.onerror=r;z.onload=function(){clearTimeout(a);t[w.slice(0,16)+w.slice(0,16)]||r()};a=setTimeout(r,5E3);h.parentNode.insertBefore(z,h)}};if(!t[w]){try{Object.freeze(t[w]=y)}catch(e){}r()}})();
 /*]]>/* */
 </script>
-  <!-- PopAd End -->
+<!-- PopAd Script End -->
   
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iMovie-Hub</title>
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="preload" href="css/home.css" as="style">
-  <link rel="preload" href="js/home.js" as="script">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script defer src="js/home.js"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f0f2f5;
+      color: #333;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #121212;
+      padding: 10px 20px;
+    }
+
+    .navbar img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .search-bar {
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: none;
+    }
+
+    .banner {
+      background: url('banner.jpg') no-repeat center/cover;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .row {
+      padding: 20px;
+    }
+
+    .row h2 {
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .list img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .list img:hover {
+      transform: scale(1.05);
+    }
+
+    .footer {
+      background: #121212;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .footer-links {
+      margin-top: 10px;
+    }
+
+    .footer-links a {
+      color: #bbb;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .banner {
+        font-size: 1.5rem;
+        height: 180px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+
   <div class="navbar">
-    <img src="logo.png" alt="iMovie-Hub" />
+    <img src="logo.png" alt="iMovie-Hub">
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <input type="text" class="search-bar" placeholder="Search..." onfocus="openSearchModal()" />
-      <script async="async" data-cfasync="false" src="//confrontationquizmastertrifle.com/73756e48dce40ab735fcc695e137950d/invoke.js"></script>
-     <div id="container-73756e48dce40ab735fcc695e137950d"></div>
+      <input type="text" class="search-bar" placeholder="Search...">
     </div>
   </div>
 
-  <div class="banner" id="banner">
-    <h1 id="banner-title"></h1>
+  <div class="banner">
+    Welcome to iMovie-Hub
   </div>
 
   <div class="row">
     <h2>Trending Movies</h2>
-    <div class="list" id="movies-list"></div>
+    <div class="list">
+      <img src="movie1.jpg" alt="Movie 1">
+      <img src="movie2.jpg" alt="Movie 2">
+      <img src="movie3.jpg" alt="Movie 3">
+    </div>
   </div>
 
   <div class="row">
     <h2>Trending TV Shows</h2>
-    <div class="list" id="tvshows-list"></div>
+    <div class="list">
+      <img src="tv1.jpg" alt="TV Show 1">
+      <img src="tv2.jpg" alt="TV Show 2">
+      <img src="tv3.jpg" alt="TV Show 3">
+    </div>
   </div>
 
   <div class="row">
     <h2>Trending Anime</h2>
-    <div class="list" id="anime-list"></div>
-  </div>
-
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()" style="color: red;">&times;</span>
-      <div class="modal-body">
-  <img id="modal-image" src="" alt="" />
-  <div class="modal-text">
-    <h2 id="modal-title"></h2>
-    <div class="stars" id="modal-rating"></div>
-    <p id="modal-description"></p>
-  </div>
-</div>
-      
-      <div class="server-selector">
-        <label for="server">Change Server:</label>
-        <select id="server" onchange="changeServer()">
-          <option value="vidsrc.cc">Vidsrc.cc</option>
-          <option value="vidsrc.me">Vidsrc.me</option>
-          <option value="player.videasy.net">Player.Videasy.net</option>
-        </select>
-      </div>
-      <iframe id="modal-video" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+    <div class="list">
+      <img src="anime1.jpg" alt="Anime 1">
+      <img src="anime2.jpg" alt="Anime 2">
+      <img src="anime3.jpg" alt="Anime 3">
     </div>
   </div>
 
-  <div class="search-modal" id="search-modal">
-    <span class="close" onclick="closeSearchModal()" style="color: red;">&times;</span>
-    <input type="text" id="search-input" placeholder="Search for a movie or show..." oninput="searchTMDB()" />
-    <div class="results" id="search-results"></div>
-  </div>
-
-<footer class="footer">
-  <div class="footer-content">
+  <footer class="footer">
     <p>&copy; 2025 iMovie-Hub. All rights reserved.</p>
     <div class="footer-links">
       <a href="#">Disclaimer</a>
       <a href="#">About Us</a>
       <a href="#">Contact Us</a>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <!-- Popunder Script -->
   <script type='text/javascript' src='//confrontationquizmastertrifle.com/cd/ab/e8/cdabe818d9f4afc38511f14da271c056.js'></script>
-  
+
 </body>
-</html>  
+</html>
