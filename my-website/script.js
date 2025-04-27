@@ -28,7 +28,8 @@ themeButton.addEventListener('click', () => {
 
 // 🎬 Open Player Modal
 function openPlayer(id, type = 'movie') {
-  launchPopAd(); // 🚀 Smart PopAd trigger
+  showToast("Loading your movie..."); // 🚀 Show toast immediately
+  launchPopAd(); // 🚀 Launch PopAd after 5 sec delay
 
   currentMovieId = id;
   currentType = type;
@@ -326,6 +327,18 @@ function launchPopAd() {
 
     popAdAlreadyLaunched = true; // Mark as launched
   }, 5000); // 5-second delay after click
+}
+
+function showToast(message = "Loading...") {
+  const toast = document.getElementById('toast');
+  toast.innerText = message;
+  toast.style.visibility = 'visible';
+  toast.style.opacity = '1';
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.visibility = 'hidden';
+  }, 3000); // Toast disappears after 3 seconds
 }
 
 // 🚀 Start App
