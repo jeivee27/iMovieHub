@@ -95,7 +95,7 @@ function launchPopAd() {
 function searchTMDB() {
   const query = document.getElementById('searchInput').value;
   if (query.length > 2) {
-    fetch(`https://api.themoviedb.org/3/search/multi?api_key=YOUR_TMDB_API_KEY&query=${query}`)
+    fetch(`https://api.themoviedb.org/3/search/multi?api_key=2fc7b3876456eb119074d7db7ab5a65a&query=${query}`)
       .then(response => response.json())
       .then(data => {
         const searchResults = document.getElementById('searchResults');
