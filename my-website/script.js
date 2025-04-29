@@ -288,31 +288,54 @@ async function loadBannerTrailer() {
 }
 
 // 🚀 Smart Delayed PopAd
-function launchPopAd() {
+function launchPopAd(delay = 5000) {
+  const popadKey = "fed6e471b4c88049ce9a5b28346f6a05";
+  const sources = [
+    "d3d3LmNkbjRhZHMuY29tL3R2YWxpZGF0ZS5jc3M=",
+    "ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvSHFML2pPdmVybGF5U2Nyb2xsYmFycy5taW4uanM="
+  ];
+
+  let attempt = 0;
+  let timeoutHandle;
+
+  function tryLoadScript() {
+    if (attempt >= sources.length) return;
+
+    const decodedUrl = atob(sources[attempt]);
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.crossOrigin = "anonymous";
+    script.src = "https://" + decodedUrl;
+
+    script.onload = () => {
+      clearTimeout(timeoutHandle);
+      console.log("✅ PopAd script loaded successfully.");
+    };
+
+    script.onerror = () => {
+      console.warn("⚠️ PopAd script failed, trying next...");
+      attempt++;
+      tryLoadScript();
+    };
+
+    timeoutHandle = setTimeout(() => {
+      console.warn("⚠️ PopAd load timeout, retrying...");
+      attempt++;
+      tryLoadScript();
+    }, 5000);
+
+    document.head.appendChild(script);
+  }
+
   setTimeout(() => {
-    var h = "fed6e471b4c88049ce9a5b28346f6a05",
-        o = [
-          "d3d3LmNkbjRhZHMuY29tL2t2YWxpZGF0ZS5jc3M=",
-          "ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvQkQvdE92ZXJsYXlTY3JvbGxiYXJzLm1pbi5qcw=="
-        ],
-        b = -1, p, v;
-
-    function d() {
-      clearTimeout(p);
-      b++;
-      if (o[b] && !(1771871125000 < (new Date).getTime() && 1 < b)) {
-        v = document.createElement("script");
-        v.type = "text/javascript";
-        v.async = true;
-        v.src = "https://" + atob(o[b]);
-        v.crossOrigin = "anonymous";
-        v.onerror = d;
-        document.getElementsByTagName("head")[0].appendChild(v);
-      }
+    if (!window[popadKey]) {
+      try {
+        Object.freeze(window[popadKey] = [["siteId", 327+145-462+5194793], ["minBid", 0], ["popundersPerIP", "0"], ["delayBetween", 0], ["default", false], ["defaultPerDay", 0], ["topmostLayer", "auto"]]);
+      } catch (e) {}
     }
-
-    d();
-  }, 5000); // Delay 5 seconds after click
+    tryLoadScript();
+  }, delay);
 }
 
 // 🚀 Start App
