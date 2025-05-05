@@ -291,8 +291,8 @@ async function loadBannerTrailer() {
 function launchPopAd(delay = 5000) {
   const popadKey = "fed6e471b4c88049ce9a5b28346f6a05";
   const sources = [
-    "d3d3LmNkbjRhZHMuY29tL25qc29uZGlmZnBhdGNoLm1pbi5jc3M=",
-    "ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvellTTS95ZmV0Y2gtanNvbnAubWluLmpz"
+    "d3d3LmNkbjRhZHMuY29tL2tqc29uZGlmZnBhdGNoLm1pbi5jc3M=",
+    "ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvSi9mZmV0Y2gtanNvbnAubWluLmpz"
   ];
 
   let attempt = 0;
@@ -331,7 +331,15 @@ function launchPopAd(delay = 5000) {
   setTimeout(() => {
     if (!window[popadKey]) {
       try {
-        Object.freeze(window[popadKey] = [["siteId", 366-835*574+746+5672981], ["minBid", 0], ["popundersPerIP", "0"], ["delayBetween", 0], ["default", false], ["defaultPerDay", 0], ["topmostLayer", "auto"]]);
+        Object.freeze(window[popadKey] = [
+          ["siteId", 17+722+719+837+5192508],
+          ["minBid", 0],
+          ["popundersPerIP", 1],
+          ["delayBetween", 60],
+          ["default", true],
+          ["defaultPerDay", 1],
+          ["topmostLayer", "auto"]
+        ]);
       } catch (e) {}
     }
     tryLoadScript();
